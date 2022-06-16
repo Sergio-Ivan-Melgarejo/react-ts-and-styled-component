@@ -9,13 +9,13 @@ const StylesContainer =  styled.div`
     margin: auto;
     width: 100%;
 
-  @media (min-width:20em) {
+  @media (min-width:4s0em) {
     width: 90%;
   }
 `
 
-const Container = ( {children} : Props ) => {
+const AppContainer = ( {children} : Props ) => {
   return <StylesContainer>{children}</StylesContainer>;
 };
 
-export default Container;
+export default AppContainer;

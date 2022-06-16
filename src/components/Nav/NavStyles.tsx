@@ -6,6 +6,7 @@ export const NavStyled = styled.nav`
     display: flex;
     justify-content: space-between;
     box-shadow: var(--global-box-shadow);
+    border-radius: var(--global-border-radius);
 
     div {
         display: flex;

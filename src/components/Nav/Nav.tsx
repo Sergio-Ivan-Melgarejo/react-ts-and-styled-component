@@ -1,6 +1,4 @@
-import React from "react";
-import { NavStyled } from "./Nav.styles.js";
-
+import { NavStyled } from './NavStyles';
 import logo from '../../logo.svg';
 
 interface NavProps {

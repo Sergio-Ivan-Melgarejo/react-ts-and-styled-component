@@ -3,8 +3,9 @@ import { useState } from 'react';
 // components
 import Nav from './components/Nav/Nav';
 import TaskList from './components/TaskList/TaskList';
-import Container from './components/GeneralComponents/Container';
-
+import AppContainer from './components/AppContainer/AppContainer';
+import Bg from './components/Bg/Bg';
+import Main from './components/Main/Main';
 
 // interfaces
 import { Task } from './Interfaces/Task';
@@ -39,16 +40,13 @@ const data = [
 function App({ title }: AppProps) {
   const [tasks, setTasks] = useState<Task[]>(data)
   return (
-    <Container >
-      <Nav title={title} />
-      {/* <header className="App-header"></header> */}
-      <h1>
-        {title && <h1>{title}</h1>}
-      </h1>
-      <main>
+    <AppContainer >
+      <Bg />
+      <Main>
+        <Nav title={title} />
         <TaskList tasks={tasks} />
-      </main>
-    </Container>
+      </Main>
+    </AppContainer>
   );
 }
 
