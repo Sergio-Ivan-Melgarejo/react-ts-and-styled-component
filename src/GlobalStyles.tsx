@@ -25,8 +25,8 @@ const GlobalStyle = createGlobalStyle<{theme:GlobalStyleProps}>`
     --global-box-shadow: 0em .5em 1em ${({theme}) => theme.shadowColor};
     --global-red: #ca4343;
     --global-red-opacity: #ca434399;
-    --global-blue: #2220cc;
-    --global-blue-opacity: #2220cc99;
+    --global-blue: #5653f3;
+    --global-blue-opacity: #5653f399;
     --global-border-radius: 5px;
   }
 
