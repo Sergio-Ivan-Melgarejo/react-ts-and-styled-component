@@ -16,7 +16,10 @@ const TaskCard = ({data}:any) => {
           open && <p>{decription}</p>
         }
     </TaskCardStyle>
-    <button>
+    <button className="Edit">
+      Edit
+    </button>
+    <button className="Delete">
       Delete
     </button>
    </div>

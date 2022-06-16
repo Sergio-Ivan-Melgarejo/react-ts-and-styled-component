@@ -6,12 +6,10 @@ import TaskList from './components/TaskList/TaskList';
 import AppContainer from './components/AppContainer/AppContainer';
 import Bg from './components/Bg/Bg';
 import Main from './components/Main/Main';
+import TaskForm from './components/TaskForm/TaskForm';
 
 // interfaces
 import { Task } from './Interfaces/Task';
-
-// Styles
-import './App.css';
 interface AppProps {
   title?:string
 }
@@ -44,6 +42,7 @@ function App({ title }: AppProps) {
       <Bg />
       <Main>
         <Nav title={title} />
+        <TaskForm />
         <TaskList tasks={tasks} />
       </Main>
     </AppContainer>

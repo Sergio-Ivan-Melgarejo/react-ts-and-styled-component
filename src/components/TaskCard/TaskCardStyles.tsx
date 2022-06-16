@@ -21,17 +21,17 @@ export const TaskCardStyle = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  transition: color .3s ease-in, padding-top .3s ease-in;
   /* animation: ${animacionDelete} 2s ease-in forwards; */
-  transition: color .3s ease-in, box-shadow .3s ease-in;
 
   &:hover{
-    box-shadow: var(--global-box-shadow);
     color: var(--global-text-color);
+    padding-top: 3em;
   }
 
   &.open{
-    box-shadow: var(--global-box-shadow);
     color: var(--global-text-color);
+    padding-top: 3em;
   }
 
   h3{
@@ -51,20 +51,36 @@ export const TaskCardStyle = styled.div`
   }
 
 
-  // delete button
-  & + button{
+  // Buttons
+  & ~ button{
+    width: 80px;
     position: absolute;
     top: .5em;
-    right: .5em;
-    background-color: transparent;
+    background-color: var(--global-bg-card);
     color: var(--global-seconday-text-color);
     border: var(--global-seconday-text-color) 1px solid;
     padding: .5em;
     border-radius: var(--global-border-radius);
     cursor: pointer;
-    transform: translateX(5em);
+    transform: translateY(-3em);
     transition: color .3s ease-in, border-color .3s ease-in, transform .3s ease-in;
-    background-color: #00000099;
+  }
+
+  &:hover ~ button {
+    transform: translateY(0em);
+  }
+
+  button:hover ~ & {
+    padding-top: 3em;
+  }
+
+  &.open ~ button {
+    transform: translateY(0);
+  }
+
+  // delete button
+  & ~ .Delete{
+    right: .5em;
 
     &:hover{
       color: var(--global-red);
@@ -73,29 +89,15 @@ export const TaskCardStyle = styled.div`
     }
   }
 
-  &:hover + button {
-    transform: translateX(0em);
+  // delete Edit
+  & ~ .Edit{
+    left: .5em;
+
+    &:hover{
+      color: var(--global-blue);
+      border-color: var(--global-blue);
+      transform: translateX(0em);
+    }
   }
+
 `
-
-// const Box = styled.div`
-//   padding: 1rem;
-//   margin: 1rem;
-//   font-size: 1.5em;
-//   color: ${({theme}) => theme.color};
-//   background: ${({theme}) => theme.bg};
-// `
-// const light = {
-//   color:"#000",
-//   bg:"#fff"
-// }
-
-// const dark = {
-//   color:"#fff",
-//   bg:"#000"
-// }
-
-// const BoxExtendida = styled(Box)`
-//   border-radius: 50%;
-
-// `

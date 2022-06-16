@@ -12,7 +12,7 @@ export const BgStyle = styled.div`
     }
 
     div{
-        background: linear-gradient(120deg, #1938e990,#990d5390);
+        background: linear-gradient(120deg, var(--global-blue-opacity),var(--global-red-opacity));
         position: absolute;
         left: 0;
         top: 0;

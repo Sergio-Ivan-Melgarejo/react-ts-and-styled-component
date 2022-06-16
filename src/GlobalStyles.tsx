@@ -24,6 +24,9 @@ const GlobalStyle = createGlobalStyle<{theme:GlobalStyleProps}>`
     --global-seconday-text-color: ${({theme}) => theme.secondaryTextColor};
     --global-box-shadow: 0em .5em 1em ${({theme}) => theme.shadowColor};
     --global-red: #ca4343;
+    --global-red-opacity: #ca434399;
+    --global-blue: #2220cc;
+    --global-blue-opacity: #2220cc99;
     --global-border-radius: 5px;
   }
 
@@ -31,6 +34,12 @@ const GlobalStyle = createGlobalStyle<{theme:GlobalStyleProps}>`
     background-color: var(--global-bg);
     color: var(--global-text-color);
     min-height: 100vh;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .relative{
