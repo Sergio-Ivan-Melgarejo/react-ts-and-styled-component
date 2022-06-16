@@ -2,14 +2,14 @@ import {createGlobalStyle, ThemeProvider} from 'styled-components';
 
 // GlobalStyle _______________________________________
 
-interface Props {
+interface GlobalStyleProps {
   bgColor: string,
   bgCardColor: string,
   textColor: string,
   shadowColor: string
 }
 
-const GlobalStyle = createGlobalStyle<{theme:Props}>`
+const GlobalStyle = createGlobalStyle<{theme:GlobalStyleProps}>`
   *,*::after,*::before{
     box-sizing: border-box;
     margin: 0;
@@ -39,13 +39,16 @@ const light = {
   shadowColor:"#00000050"
 }
 const dark = {
-  bgColor:"##121212",
+  bgColor:"#121212",
   bgCardColor:"#232323",
   textColor:"#fafafa",
-  shadowColor:"#ffffff50"
+  shadowColor:"#00000050"
+}
+interface PropsThemeForGlobalStyled {
+  children: any
 }
 
-export const ThemeForGlobalStyled = ({children}: {children: any}) => {
+export const ThemeForGlobalStyled = ( {children} : PropsThemeForGlobalStyled ) => {
     return (
         <ThemeProvider theme={dark}>
             {children}

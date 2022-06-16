@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeForGlobalStyled>
-      <App title="React with Tipescript and Styled Component" />
+      <App title="React with Tipescript and Styled Components" />
     </ThemeForGlobalStyled>
   </React.StrictMode>
 );

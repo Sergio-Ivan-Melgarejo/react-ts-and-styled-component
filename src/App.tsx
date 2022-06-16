@@ -1,17 +1,19 @@
 import { useState } from 'react';
-import TaskCard from './components/TaskCard/TaskCard';
-import './App.css';
 import styled from 'styled-components';
-import Nav from './components/Nav/Nav';
 
+// components
+import Nav from './components/Nav/Nav';
+import TaskList from './components/TaskList/TaskList';
+import Container from './components/GeneralComponents/Container';
+
+
+// interfaces
+import { Task } from './components/Interfaces/Task';
+
+// Styles
+import './App.css';
 interface AppProps {
   title:string
-}
-interface Task {
-  id:number,
-  title:string,
-  decription:string,
-  completed:boolean
 }
 
 const data = [
@@ -38,25 +40,17 @@ const data = [
 function App({ title }: AppProps) {
   const [tasks, setTasks] = useState<Task[]>(data)
   return (
-    <AppContainer >
+    <Container >
       <Nav title={title} />
-
-      {/* <header className="App-header">
-       
-      </header> */}
+      {/* <header className="App-header"></header> */}
       <h1>
         {title}
       </h1>
-      {
-        tasks.map(task => (<TaskCard data={task} />))
-      }
-    </AppContainer>
+      <main>
+        <TaskList tasks={tasks} />
+      </main>
+    </Container>
   );
 }
 
 export default App;
-
-
-const AppContainer = styled.div`
-
-`
