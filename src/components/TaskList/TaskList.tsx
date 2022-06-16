@@ -2,7 +2,8 @@
 import TaskCard from "../TaskCard/TaskCard";
 
 // interface
-import { Task } from "../Interfaces/Task";
+import { Task } from "../../Interfaces/Task";
+import { TaskListStyle } from "./TaskListStyle";
 
 interface TaskListProps {
   tasks: Task[];
@@ -10,11 +11,11 @@ interface TaskListProps {
 
 const TaskList = ({ tasks }: TaskListProps) => {
   return (
-    <>
+    <TaskListStyle>
       {tasks.map((task) => (
         <TaskCard data={task} />
       ))}
-    </>
+    </TaskListStyle>
   );
 };
 

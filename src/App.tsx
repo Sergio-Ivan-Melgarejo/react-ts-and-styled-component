@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 
 // components
 import Nav from './components/Nav/Nav';
@@ -8,12 +7,12 @@ import Container from './components/GeneralComponents/Container';
 
 
 // interfaces
-import { Task } from './components/Interfaces/Task';
+import { Task } from './Interfaces/Task';
 
 // Styles
 import './App.css';
 interface AppProps {
-  title:string
+  title?:string
 }
 
 const data = [
@@ -44,7 +43,7 @@ function App({ title }: AppProps) {
       <Nav title={title} />
       {/* <header className="App-header"></header> */}
       <h1>
-        {title}
+        {title && <h1>{title}</h1>}
       </h1>
       <main>
         <TaskList tasks={tasks} />
