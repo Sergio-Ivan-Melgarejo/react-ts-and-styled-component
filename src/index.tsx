@@ -3,40 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createGlobalStyle} from 'styled-components';
+import { ThemeForGlobalStyled } from './GlobalStyles';
 
-// es como el archivo de reseteo
-
-const GlobalStyle = createGlobalStyle`
-  *,*::after,*::before{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  :root{
-    --global-bg:#fff;
-    --global-bg-card:#fafafa;
-    --global-text-color:#313131;
-    --global-box-shadow: 0em .5em 1em #00000050;
-  }
-
-  body{
-    background-color: var(--global-bg);
-    color: var(--global-text-const);
-    min-height: 100vh;
-  }
-`
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <>
+    <ThemeForGlobalStyled>
       <App title="React with Tipescript and Styled Component" />
-      <GlobalStyle />
-    </>
+    </ThemeForGlobalStyled>
   </React.StrictMode>
 );
 
