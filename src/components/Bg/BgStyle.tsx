@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const BgStyle = styled.div`
     height: 20em;
+    border-bottom-left-radius: var(--global-border-radius);
+    border-bottom-right-radius: var(--global-border-radius);
+    overflow: hidden;
 
     img{
         display: block;
