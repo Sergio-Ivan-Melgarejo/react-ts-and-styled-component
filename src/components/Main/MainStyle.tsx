@@ -5,4 +5,7 @@ export const MainStyle = styled.main`
     width: 80%;
     margin: auto;
     transform: translateY(-8em);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 `
