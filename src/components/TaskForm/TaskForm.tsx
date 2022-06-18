@@ -1,6 +1,6 @@
 import { Form } from "./TaskFormStyles";
 import { AiOutlinePlus } from "react-icons/ai";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { Task } from "../../Interfaces/Task";
 
 const initialState = {
@@ -16,6 +16,8 @@ type handleTypeChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 const TaskForm = ( {addNewTask} : Props ) => {
   const [task, setTask] = useState(initialState);
+  const inputTitle = useRef<HTMLInputElement>(null);
+  
 
   const handleChange = ({
     target,
@@ -28,6 +30,7 @@ const TaskForm = ( {addNewTask} : Props ) => {
     e.preventDefault();
     addNewTask({...task, id: getCurentTimeTamp(), completed: false})
     setTask(initialState)
+    inputTitle.current?.focus();
   }
 
   const getCurentTimeTamp = ():number => new Date().getTime();
@@ -41,6 +44,8 @@ const TaskForm = ( {addNewTask} : Props ) => {
         type="text"
         name="title"
         placeholder="write a title"
+        autoFocus
+        ref={inputTitle}
       />
       <textarea
         onChange={handleChange}
