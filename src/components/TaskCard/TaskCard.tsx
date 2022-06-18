@@ -1,21 +1,29 @@
 // Components
 import { useState } from "react";
+import { Task } from "../../Interfaces/Task";
 import { TaskCardStyle } from "./TaskCardStyles";
 
-const TaskCard = ({ data }: any) => {
+interface Props{
+  data: Task;
+  deleteTask: (id:number) => void;
+}
+
+const TaskCard = ( { data, deleteTask } : Props ) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => setOpen((prev) => !prev);
 
-  const { id, title, decription } = data;
+  const { id, title, description } = data;
+
+  const handleDelete = () => deleteTask(id)
   return (
     <TaskCardStyle className={open ? "open" : ""}>
       <div className="card" key={id} color="blue" onClick={handleClick}>
         <h3>{title}</h3>
         <span>{id}</span>
-        {open && <p>{decription}</p>}
+        {open && <p>{description}</p>}
       </div>
       <button className="Edit">Edit</button>
-      <button className="Delete">Delete</button>
+      <button onClick={handleDelete} className="Delete">Delete</button>
     </TaskCardStyle>
   )
 }

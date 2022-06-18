@@ -18,32 +18,34 @@ const data = [
   {
     id:1,
     title: "Learn React",
-    decription: "Learn React",
+    description: "Learn React",
     completed: false
   },
   {
     id:2,
     title: "Learn Typescript",
-    decription: "Learn Typescript",
+    description: "Learn Typescript",
     completed: false
   },
   {
     id:3,
     title: "Learn Styled Component",
-    decription: "Learn Styled Component",
+    description: "Learn Styled Component",
     completed: false
   }
 ]
 
 function App({ title }: AppProps) {
-  const [tasks, setTasks] = useState<Task[]>(data)
+  const [tasks, setTasks] = useState<Task[]>(data);
+  const addNewTask = (task:Task) => setTasks([...tasks, task]);
+  const deleteTask = (id:number) => setTasks(tasks.filter((task) => task.id !== id))
   return (
     <AppContainer >
       <Bg />
       <Main>
         <Nav title={title} />
-        <TaskForm />
-        <TaskList tasks={tasks} />
+        <TaskForm addNewTask={addNewTask} />
+        <TaskList tasks={tasks} deleteTask={deleteTask} />
       </Main>
     </AppContainer>
   );

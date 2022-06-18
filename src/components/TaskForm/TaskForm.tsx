@@ -1,24 +1,59 @@
-import { TaskFormStyle } from "./TaskFormStyles";
-import { AiOutlinePlus } from "react-icons/ai"
-import { useState } from "react";
+import { Form } from "./TaskFormStyles";
+import { AiOutlinePlus } from "react-icons/ai";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { Task } from "../../Interfaces/Task";
 
-const dataInitial = {
-  title:"",
-  description:""
+const initialState = {
+  title: "",
+  description: "",
+};
+
+interface Props {
+  addNewTask: (task:Task) => void;
 }
 
-const TaskForm = () => {
-  const [task, setTask] = useState(dataInitial);
+type handleTypeChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+
+const TaskForm = ( {addNewTask} : Props ) => {
+  const [task, setTask] = useState(initialState);
+
+  const handleChange = ({
+    target,
+  }: handleTypeChange) => {
+    const { name, value } = target;
+    setTask({ ...task, [name]: value });
+  };
+
+  const handleSubmit = ( e : FormEvent<HTMLFormElement> ) => {
+    e.preventDefault();
+    addNewTask({...task, id: getCurentTimeTamp(), completed: false})
+    setTask(initialState)
+  }
+
+  const getCurentTimeTamp = ():number => new Date().getTime();
+
   return (
-    <TaskFormStyle>
+    <Form onSubmit={handleSubmit}>
       <h2>Add Task</h2>
-      <input type="text" name="title" placeholder="write a title" />
-      <textarea name="description" placeholder="write a description" rows={3} />
+      <input
+        onChange={handleChange}
+        value={task.title}
+        type="text"
+        name="title"
+        placeholder="write a title"
+      />
+      <textarea
+        onChange={handleChange}
+        value={task.description}
+        name="description"
+        placeholder="write a description"
+        rows={3}
+      />
       <button>
-        <span>Save</span> 
+        <span>Save</span>
         <AiOutlinePlus />
       </button>
-    </TaskFormStyle>
+    </Form>
   );
 };
 

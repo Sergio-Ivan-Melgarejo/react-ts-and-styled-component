@@ -5,15 +5,18 @@ import TaskCard from "../TaskCard/TaskCard";
 import { Task } from "../../Interfaces/Task";
 import { TaskListStyle } from "./TaskListStyle";
 
-interface TaskListProps {
+interface Props {
   tasks: Task[];
+  deleteTask: (id:number) => void;
 }
 
-const TaskList = ({ tasks }: TaskListProps) => {
+const TaskList = ( { tasks, deleteTask } : Props ) => {
   return (
     <TaskListStyle>
       {tasks.map((task) => (
-        <TaskCard data={task} />
+        <div key={task.id}>
+          <TaskCard data={task} deleteTask={deleteTask} />
+        </div>
       ))}
     </TaskListStyle>
   );
