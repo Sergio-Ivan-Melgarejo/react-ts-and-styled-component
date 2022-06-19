@@ -1,15 +1,10 @@
-import { MainStyle } from "./MainStyle";
+import styled from "styled-components";
 
-interface MainProps {
-    children:any
-}
-
-const Main = ( {children} : MainProps ) => {
-  return (
-    <MainStyle>
-        {children}
-    </MainStyle>
-  )
-}
-
-export default Main;
+export const ContainerStyle = styled.main`
+    max-width: 80em;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+`

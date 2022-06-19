@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 // components
-import Nav from './components/Nav/Nav';
-import TaskList from './components/TaskList/TaskList';
-import AppContainer from './components/AppContainer/AppContainer';
-import Bg from './components/Bg/Bg';
-import Main from './components/Main/Main';
-import TaskForm from './components/TaskForm/TaskForm';
+import Nav from './components/Nav';
+import TaskList from './components/TaskList';
+import AppContainer from './components/AppContainer';
+import Bg from './components/Bg';
+import Main from './components/Main';
+import TaskForm from './components/TaskForm';
 
 // interfaces
 import { Task } from './Interfaces/Task';

@@ -1,65 +1,46 @@
-import { Form } from "./TaskFormStyles";
-import { AiOutlinePlus } from "react-icons/ai";
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import { Task } from "../../Interfaces/Task";
+import styled from "styled-components";
 
-const initialState = {
-  title: "",
-  description: "",
-};
+export const StylesContainer = styled.form`
+    background-color: var(--global-bg-card);
+    border-radius: var(--global-border-radius);
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
 
-interface Props {
-  addNewTask: (task:Task) => void;
-}
+    h2{
+        font-size: 1.4em;
+        width: 100%;
+    }
 
-type handleTypeChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+    input,
+    textarea,
+    button{
+        width: 100%;
+        padding: .75em;
+        border-radius: var(--global-border-radius);
+        border: none;
+        font-size: .9em;
+        background-color: var(--global-bg);
+        color: var(--global-text-color);
+        resize: none;
+    }
 
-const TaskForm = ( {addNewTask} : Props ) => {
-  const [task, setTask] = useState(initialState);
-  const inputTitle = useRef<HTMLInputElement>(null);
-  
+    button{
+        cursor: pointer;
+        transition: background .3s ease-in;
+    }
 
-  const handleChange = ({
-    target,
-  }: handleTypeChange) => {
-    const { name, value } = target;
-    setTask({ ...task, [name]: value });
-  };
+    button:hover{ 
+        background: linear-gradient(120deg, var(--global-blue-opacity),var(--global-red-opacity));
+    }
 
-  const handleSubmit = ( e : FormEvent<HTMLFormElement> ) => {
-    e.preventDefault();
-    addNewTask({...task, id: getCurentTimeTamp(), completed: false})
-    setTask(initialState)
-    inputTitle.current?.focus();
-  }
+    @media screen and (min-width: 40em) {
+        input,
+        textarea,
+        button{
+            flex: 1 1 1px;
+        }
+    }
 
-  const getCurentTimeTamp = ():number => new Date().getTime();
-
-  return (
-    <Form onSubmit={handleSubmit}>
-      <h2>Add Task</h2>
-      <input
-        onChange={handleChange}
-        value={task.title}
-        type="text"
-        name="title"
-        placeholder="write a title"
-        autoFocus
-        ref={inputTitle}
-      />
-      <textarea
-        onChange={handleChange}
-        value={task.description}
-        name="description"
-        placeholder="write a description"
-        rows={3}
-      />
-      <button>
-        <span>Save</span>
-        <AiOutlinePlus />
-      </button>
-    </Form>
-  );
-};
-
-export default TaskForm;
+`

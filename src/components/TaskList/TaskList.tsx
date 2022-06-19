@@ -1,33 +1,14 @@
-// Components
-import TaskCard from "../TaskCard/TaskCard";
+import styled from "styled-components";
 
-// interface
-import { Task } from "../../Interfaces/Task";
-import { TaskListStyle } from "./TaskListStyle";
+export const TaskListStyle = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1em;
+    align-items: start;
 
-interface Props {
-  tasks: Task[];
-  deleteTask: (id: number) => void;
-}
-
-const relleno = 4;
-
-const TaskList = ({ tasks, deleteTask }: Props) => {
-  console.log(new Array(relleno - tasks.length))
-  return (
-    <TaskListStyle>
-      {tasks.map((task) => (
-        <div className="container" key={task.id}>
-          <TaskCard data={task} deleteTask={deleteTask} />
-        </div>
-      ))}
-      {
-        relleno - tasks.length > 0 &&
-      new Array(relleno - tasks.length).fill("relleno").map((task,index) => (
-        <div key={`relleno-${index}`} className="container"></div>
-      ))}
-    </TaskListStyle>
-  );
-};
-
-export default TaskList;
+    .container{
+        height: 8em;
+        border-radius: var(--global-border-radius);
+        background-color: var(--global-bg-card);
+    }
+`
