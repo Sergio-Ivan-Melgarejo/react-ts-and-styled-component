@@ -7,4 +7,5 @@ export const ContainerStyle = styled.main`
     display: flex;
     flex-direction: column;
     gap: 1em;
+    margin-top: 10em;
 `

@@ -12,6 +12,8 @@ export const StylesContainer = styled.div`
     left: 50%;
     transform: translateX(-50%);
     max-width: 100em;
+    /* border: 1px solid var(--global-bg-card); */
+    background-color: var(--global-bg-card);
 
     img{
         display: block;

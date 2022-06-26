@@ -1,44 +1,24 @@
 // Components
-import { useState } from "react";
 import { limitString } from "../../hooks/useLimitString";
 import { Task } from "../../Interfaces/Task";
 import { StylesContainer } from "./TaskCard";
 
 interface Props{
-  data: Task;
-  deleteTask: (id:number) => void;
+  data: Task
+  openCard: (data:Task) => void
 }
 
-const TaskCard = ( { data, deleteTask } : Props ) => {
-  const [open, setOpen] = useState(false);
-  const handleClick = () => setOpen((prev) => !prev);
-  const handleDelete = () => deleteTask(id)
-
+const TaskCard = ( { data, openCard } : Props ) => {
+  const handleClick = () => openCard(data)
   const { id, title, description } = data;
   const dataTime = new Date(id).toLocaleString() + " hr.";
   return (
-    <StylesContainer className={open ? "open" : ""}>
-      <div className="bg"></div>
-      <div className="card" key={id} color="blue" onClick={handleClick}>
-        {
-          open 
-          ? <h3>{title}</h3>
-          : <p>{limitString({str:title,limit:30})}</p>
-        }
+    <StylesContainer onClick={handleClick}>
+      <div className="card">
+        <h3>{limitString({str:title,limit:30})}</h3>
         <span>{dataTime}</span>
-        {
-          open 
-          ? <p>{description}</p>
-          : <p>{limitString({str:description,limit:60})}</p>
-        }
+        <p>{limitString({str:description,limit:60})}</p>
       </div>
-      {
-        open && 
-        <>
-          <button className="Edit">Edit</button>
-          <button onClick={handleDelete} className="Delete">Delete</button>
-        </>
-      }
     </StylesContainer>
   )
 }

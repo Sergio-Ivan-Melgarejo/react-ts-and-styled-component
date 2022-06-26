@@ -3,7 +3,7 @@ import background from "../../assets/bg.jpg"
 
 const Bg = () => {
   return (
-    <StylesContainer className="hidden relative" >
+    <StylesContainer>
         <img src={background} alt="" />
         <div/>
     </StylesContainer>
