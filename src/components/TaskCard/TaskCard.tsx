@@ -1,42 +1,32 @@
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 
-const animacionDelete = keyframes`
-0%{
-  background:red;
-  color:blue
-}
-100%{
-  background:blue;
-  color:red
-}
-`
 
 export const StylesContainer = styled.div` 
-/* animation: ${animacionDelete} 2s ease-in forwards; */
   text-align: center; 
-  color: var(--global-seconday-text-color);
-  /* position: relative; */
-  /* overflow: hidden; */
   height: 100%;
+  padding: 1em; 
+  background-color: var(--global-bg-card);
+  border-radius: var(--global-border-radius);
+  color: var(--global-seconday-text-color);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  border: 1px solid transparent;
+  transition: color .3s ease-in, border-color .3s ease-in, transform .3s ease-in, box-shadow .3s ease-in;
+
+  &:hover{
+    color: var(--global-text-color);
+    border-width: 1px;
+    border-color: var(--global-blue-opacity) var(--global-red-opacity) var(--global-red-opacity) var(--global-blue-opacity);
+    border-style: solid;
+    transform: scale(1.01);
+    box-shadow: -.25em -.25em 1em var(--global-blue-opacity),
+                .25em .25em 1em var(--global-red-opacity);
+  }
 
   @media screen and (min-width: 40em) {
     text-align: left;
-  }
-
-  .card{
-    height: 100%;
-    background-color: var(--global-bg-card);
-    border-radius: var(--global-border-radius);
-    padding: 1em; 
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: .5em;
-    transition: color .3s ease-in, padding-top .3s ease-in;
-  }
-
-  &:hover .card{
-    color: var(--global-text-color);
   }
 
   h3{
@@ -45,7 +35,6 @@ export const StylesContainer = styled.div`
 
   span{
     font-size: .8em;
-    color: var(--global-seconday-text-color);
   }
 
   p{
@@ -88,98 +77,5 @@ export const StylesContainer = styled.div`
   p::-webkit-scrollbar-track {
       border-radius: 4px;
       background: var(--global-bg);
-  }
-
-
-  
-  // Buttons
-  & button{
-    font-size: .8em;
-    width: 5em;
-    position: absolute;
-    top: .5em;
-    background-color: var(--global-bg-card);
-    color: var(--global-seconday-text-color);
-    border: var(--global-seconday-text-color) 1px solid;
-    padding: .3em;
-    border-radius: var(--global-border-radius);
-    cursor: pointer;
-    transform: translateY(-3em);
-    transition: color .3s ease-in, border-color .3s ease-in, transform .3s ease-in;
-  }
-
-  &:hover button {
-    transform: translateY(0em);
-  }
-
-  &.open button {
-    transform: translateY(0);
-  }
-
-  // delete button
-  &  .Delete{
-    right: .5em;
-
-    &:hover{
-      color: var(--global-red);
-      border-color: var(--global-red);
-    }
-  }
-
-  // delete Edit
-  &  .Edit{
-    left: .5em;
-
-    &:hover{
-      color: var(--global-blue);
-      border-color: var(--global-blue);
-    }
-  }
-
-
-
-  &.open .card{
-    color: var(--global-text-color);
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 90%;
-    max-width: 600px;
-    height: 90%;
-    max-width: 600px;
-    font-size: 1.5em;
-  }
-  
-  &.open h3{
-    order: 2;
-    border: 1px solid var(--global-seconday-text-color);
-    border-radius: var(--global-border-radius);
-    padding: .3em;
-    flex: 1 1 1px;
-  }
-
-  &.open span{
-    order: 1;
-    border: 1px solid var(--global-seconday-text-color);
-    border-radius: var(--global-border-radius);
-    padding: .3em;
-  }
-  
-  &.open p{
-    order: 3;
-    border: 1px solid var(--global-seconday-text-color);
-    border-radius: var(--global-border-radius);
-    padding: .3em;
-    flex: 4 1 1px;
-  }
-
-  &.open .bg {
-    background-color: #00000099;
-    position: fixed;
-    left: 0; 
-    top: 0;
-    width: 100%;
-    height: 100%;
   }
 `

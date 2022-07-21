@@ -6,7 +6,7 @@ import { Task } from "../../Interfaces/Task";
 import { TaskListStyle } from "./TaskList";
 
 interface Props {
-  tasks: Array<Task>
+  tasks: Array<Task> | null
   deleteTask: (id: number) => void
   editTask: (id:number,editedTask:Task) => void
   openCard: (data:Task) => void
@@ -15,7 +15,7 @@ interface Props {
 const relleno = 4;
 
 const TaskList = ({ tasks, deleteTask, editTask, openCard }: Props) => {
-  console.log(new Array(relleno - tasks.length))
+  if (!tasks) return null
   return (
     <TaskListStyle>
       {tasks.map((task) => (

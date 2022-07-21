@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // components
 import Nav from './components/Nav';
@@ -10,37 +10,17 @@ import TaskForm from './components/TaskForm';
 
 // interfaces
 import { Task } from './Interfaces/Task';
-import ShowCard from './components/ShowCard';
+import ShowCard from './components/ModalCard';
+import getTasks from './services/getTasks';
 interface AppProps {
   title?:string
 }
 
-const data = [
-  {
-    id:1,
-    title: "Learn React",
-    description: "Learn React",
-    completed: false
-  },
-  {
-    id:2,
-    title: "Learn Typescript",
-    description: "Learn Typescript",
-    completed: false
-  },
-  {
-    id:3,
-    title: "Learn Styled Component",
-    description: "Learn Styled Component",
-    completed: false
-  }
-]
-
 function App({ title }: AppProps) {
-  const [tasks, setTasks] = useState<Task[]>(data);
-  const addNewTask = (task:Task) => setTasks([...tasks, task]);
-  const deleteTask = (id:number) => setTasks(tasks.filter((task) => task.id !== id))
-  const editTask = (id:number, editedTask:Task) => setTasks(tasks.filter((task) => task.id !== id ? task : editedTask))
+  const [tasks, setTasks] = useState<Task[] | null>(null);
+  const addNewTask = (task:Task) => { if (tasks) setTasks([...tasks, task]) }
+  const deleteTask = (id:number) => { if (tasks) setTasks(tasks.filter((task) => task.id !== id)) }
+  const editTask = (id:number, editedTask:Task) => { if (tasks) setTasks(tasks.filter((task) => task.id !== id ? task : editedTask)) }
 
   const [show, setShow] = useState(false);
   const [dataCard, setDataCard] = useState<Task | null>(null);
@@ -52,6 +32,15 @@ function App({ title }: AppProps) {
     setShow(false)
     setDataCard(null)
   }
+
+  useEffect(() => {
+    getTasks()
+    .then((res) => {
+      console.log(res)
+      if (!res?.error) setTasks(res)
+    })
+  }, []);
+  
   return (
     <AppContainer>
       <Bg />

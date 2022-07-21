@@ -1,11 +1,10 @@
 import { StylesContainer } from "./TaskForm";
-import { AiOutlinePlus } from "react-icons/ai";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { Task } from "../../Interfaces/Task";
 
 const initialState = {
   title: "",
-  description: "",
+  content: "",
 };
 
 interface Props {
@@ -46,17 +45,19 @@ const TaskForm = ( {addNewTask} : Props ) => {
         placeholder="write a title"
         autoFocus
         ref={inputTitle}
+        required
+        minLength={4}
       />
+      <label htmlFor="title"></label>
       <textarea
         onChange={handleChange}
-        value={task.description}
-        name="description"
-        placeholder="write a description"
+        value={task.content}
+        name="content"
+        placeholder="write a content"
         rows={3}
       />
       <button>
         <span>Save</span>
-        <AiOutlinePlus />
       </button>
     </StylesContainer>
   );
